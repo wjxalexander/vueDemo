@@ -5,9 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "node-sass": "^4.9.3",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.2.0",
+    "parcel-bundler": "^1.10.1",
+    "vue-template-compiler": "^2.5.17"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,5 +30,9 @@
   "bugs": {
     "url": "https://github.com/wjxalexander/vueDemo/issues"
   },
-  "homepage": "https://github.com/wjxalexander/vueDemo#readme"
+  "homepage": "https://github.com/wjxalexander/vueDemo#readme",
+  "alias": {
+      "vue" : "./node_modules/vue/dist/vue.common.js"
+    }
+  
 }
