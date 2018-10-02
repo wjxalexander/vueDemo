@@ -4,7 +4,8 @@
   "description": "this is a UI frame",
   "main": "index.js",
   "dependencies": {
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.9.3",
+    "vue": "^2.5.17"
   },
   "devDependencies": {},
   "scripts": {
