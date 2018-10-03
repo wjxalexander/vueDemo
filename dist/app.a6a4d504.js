@@ -11344,7 +11344,19 @@ exports.default = void 0;
 //
 var _default = {
   //设置接受的参数
-  props: ["icon", "iconPosition"]
+  //   props: ["icon", "iconPosition"],避免undefined的出现
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: "left",
+      // 属性检查器：validator
+      validator: function validator(value) {
+        return value === "left" || value === "right";
+      } //   left 是字符串！
+
+    }
+  }
 };
 exports.default = _default;
         var $fbb048 = exports.default || module.exports;
