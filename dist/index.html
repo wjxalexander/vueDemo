@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue Component</title>
-    <style>*{
+    <style>* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        :root{
+
+        :root {
             --button-height: 32px;
             --font-size: 14px;
             --button-bg: white;
@@ -19,15 +21,37 @@
             --color: #333;
             --border-color: #999;
             --border-color-hover: #666;
+        }
+
+        .g-button {
+            margin: 2em;
+        }</style>
+    <style>.icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
         }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
+
 <body>
     <div id="app">
-      <g-button></g-button>
+        <!--通过icon,icon-position 将参数传入组件中  -->
+        <g-button icon="setting" icon-position="left">
+            按钮
+        </g-button>
+        <g-button icon="setting" icon-position="right">
+            按钮
+        </g-button>
+        <g-button>
+            按钮
+        </g-button>
     </div>
 
-
-<script src="/app.a6a4d504.js"></script>
+    <script src="/app.a6a4d504.js"></script>
+    <script src="//at.alicdn.com/t/font_860600_v6damywygds.js"></script>
 
 </body>
+
 </html>
