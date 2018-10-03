@@ -3,9 +3,10 @@
     ${icon}为占位符
     插槽slot
     对于iconPosition: 有三种情况： ‘undefined‘：true， ‘left’：true；’right‘：true’
+    :name = 'icon'： 变量icon
     -->
    <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <g-icon v-if="icon" :name = 'icon'></g-icon>
+    <g-icon class="icon" v-if="icon" :name = 'icon'></g-icon>
     <div class = 'content'>
       <slot></slot>
     </div>
