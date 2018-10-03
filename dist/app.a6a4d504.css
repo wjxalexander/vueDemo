@@ -42,8 +42,9 @@
   display: inline-flex;
   vertical-align: middle; }
   .buttongroup > .g-button {
-    border-radius: 0;
-    margin-left: -1px; }
+    border-radius: 0; }
+    .buttongroup > .g-button:not(:first-child) {
+      margin-left: -1px; }
     .buttongroup > .g-button:first-child {
       border-top-left-radius: var(--border-radius);
       border-bottom-left-radius: var(--border-radius); }
