@@ -11387,7 +11387,8 @@ var _button = _interopRequireDefault(require("./button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_vue.default.component('g-button', _button.default);
+_vue.default.component('g-button', _button.default); //g-button 对应的就是BUtton
+
 
 var app = new _vue.default({
   el: '#app'
