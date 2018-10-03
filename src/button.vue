@@ -4,15 +4,17 @@
     插槽slot
     对于iconPosition: 有三种情况： ‘undefined‘：true， ‘left’：true；’right‘：true’
     :name = 'icon'： 变量icon
+    通过flex布局来确定icon的左右位置
+     @click="$emit('click')": 当button被点击是触发点击事件，否则不会触发
     -->
-   <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}">
-     <g-icon class="icon" v-if="icon" :name = 'icon'></g-icon>
-     <g-icon class="icon loading" name = 'loading'></g-icon>
+   <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}"
+   @click="$emit('click')">
+     <g-icon class="icon" v-if="icon&& !loading" :name = 'icon'></g-icon>
+     <g-icon class="icon loading" v-if="loading" name = 'loading'></g-icon>
      <div class = 'content'>
        <slot></slot>
      </div>
    </button>
-
 </template>
 <script>
 export default {
@@ -20,10 +22,14 @@ export default {
   //   props: ["icon", "iconPosition"],避免undefined的出现
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false
+    },
     iconPosition: {
       type: String,
       default: "left",
-      // 属性检查器：validator
+      // 属性检查器：validator检查用户的输入是否合规
       validator(value) {
         return value === "left" || value === "right";
       }
@@ -46,10 +52,8 @@ export default {
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background-color: var(--button-bg);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
+  display: inline-flex;  justify-content: center;
+  align-items: center;  vertical-align: middle;
   &:hover {
     border-color: var(--border-color-hover);
   }

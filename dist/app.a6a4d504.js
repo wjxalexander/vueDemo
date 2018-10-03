@@ -11342,15 +11342,21 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   //设置接受的参数
   //   props: ["icon", "iconPosition"],避免undefined的出现
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false
+    },
     iconPosition: {
       type: String,
       default: "left",
-      // 属性检查器：validator
+      // 属性检查器：validator检查用户的输入是否合规
       validator: function validator(value) {
         return value === "left" || value === "right";
       } //   left 是字符串！
@@ -11375,14 +11381,24 @@ exports.default = _default;
     "button",
     {
       staticClass: "g-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+      on: {
+        click: function($event) {
+          _vm.$emit("click")
+        }
+      }
     },
     [
-      _vm.icon
+      _vm.icon && !_vm.loading
         ? _c("g-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
         : _vm._e(),
       _vm._v(" "),
-      _c("g-icon", { staticClass: "icon loading", attrs: { name: "loading" } }),
+      _vm.loading
+        ? _c("g-icon", {
+            staticClass: "icon loading",
+            attrs: { name: "loading" }
+          })
+        : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
     ],
@@ -11502,6 +11518,7 @@ var _icon = _interopRequireDefault(require("./icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//以下两个都将组件全局化
 _vue.default.component('g-button', _button.default); //g-button 对应的就是BUtton
 
 
@@ -11509,7 +11526,10 @@ _vue.default.component('g-icon', _icon.default); //g-button 对应的就是BUtto
 
 
 var app = new _vue.default({
-  el: '#app'
+  el: '#app',
+  data: {
+    loading1: false
+  }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -11538,7 +11558,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5718" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3644" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

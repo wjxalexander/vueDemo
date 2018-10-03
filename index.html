@@ -33,11 +33,13 @@
 
 <body>
     <div id="app">
-        <!--通过icon,icon-position 将参数传入组件中  -->
-        <g-button icon='setting' icon-position='left'>
+        <!--通过icon,icon-position 将参数传入组件中 
+        v-bind 之间不能加空格 -->
+        
+        <g-button icon='setting' icon-position='left' v-bind:loading ="loading1" v-on:click="loading1 = !loading1">
           按钮
         </g-button>
-        <g-button icon='setting' icon-position='right'>
+        <g-button icon='setting' icon-position='right' v-bind:loading ="true">
           按钮
         </g-button>
         <g-button>
