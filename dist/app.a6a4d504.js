@@ -11341,6 +11341,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   //设置接受的参数
   //   props: ["icon", "iconPosition"],避免undefined的出现
@@ -11380,6 +11381,8 @@ exports.default = _default;
       _vm.icon
         ? _c("g-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
         : _vm._e(),
+      _vm._v(" "),
+      _c("g-icon", { staticClass: "icon loading", attrs: { name: "loading" } }),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
     ],

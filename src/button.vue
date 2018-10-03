@@ -6,32 +6,38 @@
     :name = 'icon'： 变量icon
     -->
    <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <g-icon class="icon" v-if="icon" :name = 'icon'></g-icon>
-    <div class = 'content'>
-      <slot></slot>
-    </div>
-  </button>
+     <g-icon class="icon" v-if="icon" :name = 'icon'></g-icon>
+     <g-icon class="icon loading" name = 'loading'></g-icon>
+     <div class = 'content'>
+       <slot></slot>
+     </div>
+   </button>
 
 </template>
 <script>
 export default {
   //设置接受的参数
-//   props: ["icon", "iconPosition"],避免undefined的出现
+  //   props: ["icon", "iconPosition"],避免undefined的出现
   props: {
-      icon:{},
-      iconPosition:{
-        type: String,
-        default: "left",
-        // 属性检查器：validator
-        validator(value){
-          return (value=== "left" || value=== "right")
-        }
-        //   left 是字符串！
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: "left",
+      // 属性检查器：validator
+      validator(value) {
+        return value === "left" || value === "right";
       }
+      //   left 是字符串！
+    }
   }
-}; 
+};
 </script>
 <style lang = "scss">
+@keyframes rotate{
+  from{
+    transform: rotate(-360deg);
+  }
+}
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -40,17 +46,38 @@ export default {
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background-color: var(--button-bg);
-  display: inline-flex; justify-content: center; align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   vertical-align: middle;
-  &:hover {border-color: var(--border-color-hover);}
-  &:active {background-color: var(--button-active-bg);}
-  &:focus {outline: none;}
-  > .content{order: 2;}
-  > .icon{order: 1; margin-right: .3em}
-  
-  &.icon-right{
-    > .content{order: 1;}
-    > .icon{order: 2; margin-right: 0em; margin-left: .3em}
+  &:hover {
+    border-color: var(--border-color-hover);
+  }
+  &:active {
+    background-color: var(--button-active-bg);
+  }
+  &:focus {
+    outline: none;
+  }
+  > .content {
+    order: 2;
+  }
+  > .icon {
+    order: 1;
+    margin-right: 0.3em;
+  }
+  &.icon-right {
+    > .content {
+      order: 1;
+    }
+    > .icon {
+      order: 2;
+      margin-right: 0em;
+      margin-left: 0.3em;
+    }
+  }
+  .loading{
+    animation: rotate 1.5s infinite linear;
   }
 }
 </style>
