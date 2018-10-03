@@ -5,9 +5,7 @@
     对于iconPosition: 有三种情况： ‘undefined‘：true， ‘left’：true；’right‘：true’
     -->
    <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <svg v-if="icon" class="icon" aria-hidden="true">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <g-icon v-if="icon" :name = 'icon'></g-icon>
     <div class = 'content'>
       <slot></slot>
     </div>
