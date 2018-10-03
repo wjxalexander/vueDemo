@@ -38,3 +38,18 @@
 .g-icon {
   width: 1em;
   height: 1em; }
+.buttongroup {
+  display: inline-flex;
+  vertical-align: middle; }
+  .buttongroup > .g-button {
+    border-radius: 0;
+    margin-left: -1px; }
+    .buttongroup > .g-button:first-child {
+      border-top-left-radius: var(--border-radius);
+      border-bottom-left-radius: var(--border-radius); }
+    .buttongroup > .g-button:last-child {
+      border-top-right-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius); }
+  .buttongroup:hover {
+    position: relative;
+    z-index: 1; }
