@@ -11362,11 +11362,6 @@ var _default = {
       } //   left 是字符串！
 
     }
-  },
-  methods: {
-    clickEvent: function clickEvent() {
-      this.$emit('click');
-    }
   }
 };
 exports.default = _default;
@@ -11387,7 +11382,11 @@ exports.default = _default;
     {
       staticClass: "g-button",
       class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
-      on: { click: _vm.clickEvent }
+      on: {
+        click: function($event) {
+          _vm.$emit("click")
+        }
+      }
     },
     [
       _vm.icon && !_vm.loading
@@ -11529,7 +11528,9 @@ _vue.default.component('g-icon', _icon.default); //g-button 对应的就是BUtto
 var app = new _vue.default({
   el: '#app',
   data: {
-    loading1: false
+    loading1: false,
+    loading2: true,
+    loading3: false
   }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
