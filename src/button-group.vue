@@ -6,7 +6,15 @@
 </template>
 <script>
 export default {
-    
+  // mounted:当该元素出现在页面中触发的函数
+    mounted(){
+      for(let node of this.$el.children){
+        let name = node.nodeName.toLowerCase()
+        if(name !== 'button'){
+          console.warn(`g-button的子元素必须是g-button,但是 这里是${name}`)
+        }
+      }
+    }
 }
 </script>
 
