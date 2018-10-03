@@ -8,7 +8,7 @@
      @click="$emit('click')": 当button被点击是触发点击事件，否则不会触发
     -->
    <button class = "g-button" :class="{[`icon-${iconPosition}`]:true}"
-   @click="$emit('click')">
+   @click="clickEvent">
      <g-icon class="icon" v-if="icon&& !loading" :name = 'icon'></g-icon>
      <g-icon class="icon loading" v-if="loading" name = 'loading'></g-icon>
      <div class = 'content'>
@@ -34,6 +34,11 @@ export default {
         return value === "left" || value === "right";
       }
       //   left 是字符串！
+    }
+  },
+  methods:{
+    clickEvent(){
+      this.$emit('click')
     }
   }
 };

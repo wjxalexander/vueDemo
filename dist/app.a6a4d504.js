@@ -11362,6 +11362,11 @@ var _default = {
       } //   left 是字符串！
 
     }
+  },
+  methods: {
+    clickEvent: function clickEvent() {
+      this.$emit('click');
+    }
   }
 };
 exports.default = _default;
@@ -11382,11 +11387,7 @@ exports.default = _default;
     {
       staticClass: "g-button",
       class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
-      on: {
-        click: function($event) {
-          _vm.$emit("click")
-        }
-      }
+      on: { click: _vm.clickEvent }
     },
     [
       _vm.icon && !_vm.loading
