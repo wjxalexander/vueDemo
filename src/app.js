@@ -17,14 +17,16 @@ var app = new Vue({
 })
 
 //单元测试
-import chai from'chai'
+import chai from 'chai'
 const expect = chai.expect
+import spies from 'chai-spies'
+chai.use(spies)
 {
   //由于button是一个对象，没法通过对象实例化，所以将对象改成函数
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
-    propsData:{
-      icon:"setting",
+    propsData: {
+      icon: "setting",
     }
   })
   button.$mount()
@@ -37,9 +39,9 @@ const expect = chai.expect
 {
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
-    propsData:{
-      icon:"setting",
-      loading:true,
+    propsData: {
+      icon: "setting",
+      loading: true,
     }
   })
   button.$mount()
@@ -54,8 +56,8 @@ const expect = chai.expect
 {
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
-    propsData:{
-      loading:true,
+    propsData: {
+      loading: true,
     }
   })
   button.$mount()
@@ -68,20 +70,20 @@ const expect = chai.expect
   button.$destroy()
 }
 {
-  // mock
+  // 使用chaispies
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData: {
-      icon: 'settings',
+      icon: 'setting',
     }
   })
   vm.$mount()
-  vm.$on('click', function () {
-    expect(1).to.eq(1)
-  })
+  let spy = chai.spy(function(){})
+  vm.$on('click',spy)
   // 希望这个函数被执行
   let button = vm.$el
   button.click()
+  expect(spy).to.have.been.called()
 }
 
 
