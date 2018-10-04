@@ -21,6 +21,7 @@ import Icon from './icon'
 export default {
   //设置接受的参数
   //   props: ["icon", "iconPosition"],避免undefined的出现
+  name: "userButton",
   components:{
     //在VUE里面使用自定义组件，需要变成局部组件 才能使用
     'g-icon': Icon
@@ -43,7 +44,7 @@ export default {
   }
 };
 </script>
-<style lang = "scss">
+<style lang = "scss" scoped>
 @keyframes rotate{
   from{
     transform: rotate(-360deg);
