@@ -1,6 +1,11 @@
 <template>
   <div class="input" :class="{'error':error}">
-    <input type="text" v-bind:value = 'value' :disabled = 'disabled' :readonly = 'readonly'>
+    <input type="text" v-bind:value = 'value' :disabled = 'disabled' :readonly = 'readonly'
+    @change="$emit('change',$event)"
+    @input="$emit('input', $event)"
+    @focus="$emit('focus', $event)"
+    @blur="$emit('blur', $event)">
+    <!-- input本身是拥有change事件的 当用户change后会出现一个事件，这个$event就是浏览器原生触发的事件 $event会被透传过去 还可以传多个参数-->
     <!-- 注意这个template的用法：无需额外的div解决两个v-if -->
     <template v-if="error"> 
       <g-icon name = 'error-circle' class="icon-error"></g-icon>
