@@ -26,6 +26,10 @@
         #app{
             padding: 2rem;
         }
+        .box{
+            display: inline-block;
+            margin: 20px;
+        }
     </style>
     
 </head>
@@ -34,11 +38,19 @@
     <div id="app">
         <!--通过icon,icon-position 将参数传入组件中 
         v-bind 之间不能加空格 -->
+        <div class="box">
         <g-input value = '张三'></g-input>
+        </div>
+        <div class="box">
         <g-input value = 'alwex'></g-input>
+        </div>
         <!-- <g-input value = 'alwex' :disabled = true></g-input> -->
+        <div class="box">
         <g-input value = 'alwwex' disabled ></g-input>
-        <g-input value = 'aeqweex' readonly ></g-input>
+        </div>
+        <div class="box">
+            <g-input value = 'aeqweex' error ="不能少于两个字" ></g-input>
+        </div>
         <div style="margin: 20px">
         <g-button icon='setting' icon-position='left' v-bind:loading ="loading1" v-on:click="loading1 = !loading1">
           按钮
