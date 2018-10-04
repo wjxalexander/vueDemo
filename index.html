@@ -39,7 +39,8 @@
         <!--通过icon,icon-position 将参数传入组件中 
         v-bind 之间不能加空格 -->
         <div class="box">
-        <g-input value = '张三'></g-input>
+        <g-input v-model='message'></g-input>
+        <p>{{message}}</p>
         </div>
         <div class="box">
         <g-input value = 'alwex' @change='inputChange'></g-input>

@@ -1,10 +1,10 @@
 <template>
   <div class="input" :class="{'error':error}">
     <input type="text" v-bind:value = 'value' :disabled = 'disabled' :readonly = 'readonly'
-    @change="$emit('change',$event)"
-    @input="$emit('input', $event)"
-    @focus="$emit('focus', $event)"
-    @blur="$emit('blur', $event)">
+    @change="$emit('change',$event.target.value)"
+    @input="$emit('input', $event.target.value)"
+    @focus="$emit('focus', $event.target.value)"
+    @blur="$emit('blur', $event.target.value)">
     <!-- input本身是拥有change事件的 当用户change后会出现一个事件，这个$event就是浏览器原生触发的事件 $event会被透传过去 还可以传多个参数-->
     <!-- 注意这个template的用法：无需额外的div解决两个v-if -->
     <template v-if="error"> 
@@ -40,14 +40,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// --button-height: 32px;
-// --font-size: 14px;
-// --button-bg: white;
-// --button-active-bg: #eee;
-// --border-radius: 4px;
-// --color: #333;
-// --border-color: #999;
-// --border-color-hover: #666;
 $height: 32px;
 $border-color: #999;
 $border-hover-color: #666;
