@@ -6,8 +6,12 @@ Vue.config.productionTip = false
 Vue.config.devtools = false
 
 describe('Button', () => {
+    //  BDD 行为驱动测试
     it('存在.', () => {
-        expect(Button).to.be.ok
+        //不是false值就OK
+        expect(Button).be.ok
+        // false: expect([1,2]).to.eq([1,2]) 指针问题
+        expect([1,2]).to.deep.eq([1,2])
     })
     it('可以设置icon.', () => {
         const Constructor = Vue.extend(Button)
@@ -70,7 +74,7 @@ describe('Button', () => {
             }
         }).$mount()
 
-        const callback = sinon.fake();
+        const callback = sinon.fake();//确定函数被调用
         vm.$on('click', callback)
         vm.$el.click()
         expect(callback).to.have.been.called
