@@ -5,7 +5,7 @@
   </svg>
 </template>
 <script>
-import './svg'
+import './svg'//svg的本地化
 export default {
     props:['name']
 };

@@ -31,11 +31,7 @@
     IE 15以上
 2. 安装 vue-demo
 3. 引入 vue-demo
-4. 引入svg-symbols
-```
-<script src="//at.alicdn.com/t/font_860600_nx6f8bjkzp.js"></script>
 
-```
 
 ## 文档
 ## 提问
