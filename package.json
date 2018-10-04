@@ -1,6 +1,6 @@
 {
   "name": "vue-demo-wjx1004",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "this is a UI frame",
   "main": "dist/index.js",
   "dependencies": {
