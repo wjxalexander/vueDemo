@@ -17,9 +17,14 @@
    </button>
 </template>
 <script>
+import Icon from './icon'
 export default {
   //设置接受的参数
   //   props: ["icon", "iconPosition"],避免undefined的出现
+  components:{
+    //在VUE里面使用自定义组件，需要变成局部组件 才能使用
+    'g-icon': Icon
+  },
   props: {
     icon: {},
     loading: {

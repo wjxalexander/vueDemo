@@ -23,51 +23,54 @@ import spies from 'chai-spies'
 chai.use(spies)
 {
   //由于button是一个对象，没法通过对象实例化，所以将对象改成函数
+  //按钮含有icon
   const Constructor = Vue.extend(Button)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
       icon: "setting",
     }
   })
-  button.$mount()
-  let useElement = button.$el.querySelector('use');
-  console.log(useElement)
+  vm.$mount()
+  let useElement =  vm.$el.querySelector('use');
+  //console.log(useElement)
   let href = useElement.getAttribute('xlink:href')
-  console.log(href)
+  //console.log(href)
   expect(href).to.eq('#i-setting')
+  vm.$el.remove()
+  vm.$destroy()
 }
 {
   const Constructor = Vue.extend(Button)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
       icon: "setting",
       loading: true,
     }
   })
-  button.$mount()
-  let useElement = button.$el.querySelector('use');
+  vm.$mount()
+  let useElement = vm.$el.querySelector('use');
   console.log(useElement)
   let href = useElement.getAttribute('xlink:href')
   console.log(href)
   expect(href).to.eq('#i-loading')
-  button.$el.remove()
-  button.$destroy()
+  vm.$el.remove()
+  vm.$destroy()
 }
 {
+  const div = document.createElement('div')
+  document.body.appendChild(div)
   const Constructor = Vue.extend(Button)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
-      loading: true,
+      icon: 'settings'
     }
   })
-  button.$mount()
-  let useElement = button.$el.querySelector('use');
-  console.log(useElement)
-  let href = useElement.getAttribute('xlink:href')
-  console.log(href)
-  expect(href).to.eq('#i-loading')
-  button.$el.remove()
-  button.$destroy()
+  vm.$mount(div)
+  let svg = vm.$el.querySelector('svg')
+  let {order} = window.getComputedStyle(svg)
+  expect(order).to.eq('1')
+  vm.$el.remove()
+  vm.$destroy()
 }
 {
   // 使用chaispies
