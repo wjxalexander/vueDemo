@@ -1,6 +1,7 @@
 const expect = chai.expect;
 import Vue from 'vue'
 import Input from '../src/input'
+import { eventNames } from 'cluster';
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -68,46 +69,19 @@ describe('Input', () => {
       afterEach(()=>{
         vm.$destroy()
       })
-      it('支持 change',()=>{
+      it('支持 change/input/focus/blur事件',()=>{
+        ["change","input","focus","blur"].forEach((eventName)=>{
         vm = new Constructor({}).$mount()
         const callback = sinon.fake()
-        vm.$on('change',callback)
-        var event = new Event('change')
+        vm.$on(eventName,callback)
+        var event = new Event(eventName)
         let inputElment = vm.$el.querySelector('input')
         inputElment.dispatchEvent(event)
         expect(callback).to.have.been.calledWith(event)
         // sinon-chai
+        })
       })
-      it('支持 focus',()=>{
-        vm = new Constructor({}).$mount()
-        const callback = sinon.fake()
-        vm.$on('focus',callback)
-        var event = new Event('focus')
-        let inputElment = vm.$el.querySelector('input')
-        inputElment.dispatchEvent(event)
-        expect(callback).to.have.been.calledWith(event)
-        // sinon-chai
-      })
-      it('支持 input',()=>{
-        vm = new Constructor({}).$mount()
-        const callback = sinon.fake()
-        vm.$on('input',callback)
-        var event = new Event('input')
-        let inputElment = vm.$el.querySelector('input')
-        inputElment.dispatchEvent(event)
-        expect(callback).to.have.been.calledWith(event)
-        // sinon-chai
-      })
-      it('支持 blur',()=>{
-        vm = new Constructor({}).$mount()
-        const callback = sinon.fake()
-        vm.$on('blur',callback)
-        var event = new Event('blur')
-        let inputElment = vm.$el.querySelector('input')
-        inputElment.dispatchEvent(event)
-        expect(callback).to.have.been.calledWith(event)
-        // sinon-chai
-      })
+      
     })
 
 })
