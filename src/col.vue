@@ -27,7 +27,7 @@ export default {
   computed: {
     colClasses() {
       let { span, offset } = this; //结构
-      return [`col-${span}`, offset && `offset-${offset}`];
+      return [span && `col-${span}`, offset && `offset-${offset}`];
     },
     colStyle() {
       // console.log('gutter变了我也要变')
@@ -44,10 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 .col {
-  height: 100px;
-  background: #cccc;
-  width: 50%;
-  border: 1px solid red;
   $class-prefix: col-;
   //说明class前缀
   @for $n from 1 through 24 {

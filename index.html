@@ -21,22 +21,48 @@
             --border-radius: 4px;
             --color: #333;
             --border-color: #999;
-            --border-color-hover: #666; 
+            --border-color-hover: #666;
         }
-        #app{
+
+        #app {
             padding: 2rem;
         }
-        .box{
+
+        .box {
             display: inline-block;
             margin: 20px;
         }
     </style>
+
 </head>
 
 <body>
+    <style>
+        .demobox{
+            min-height:50px;
+            background: #ccc;
+            border: 1px solid red
+        }
+    </style>
     <div id="app">
-        <g-row>
-            <g-col>1</g-col>
+        <g-row class="topbar" align = 'right'>
+            <g-col span='9' class="demobox">
+                <g-row align = 'right'>
+                    <g-col>1</g-col>
+                    <g-col>2</g-col>
+                    <g-col>3</g-col>
+                    <g-col>4</g-col>
+                </g-row>
+            </g-col>
+            <g-col span='15' class="demobox"></g-col>
+        </g-row>
+        <g-row class="logo-and-search-and-qecode" align = 'left'>
+            <g-col span='4' class="demobox"></g-col>
+            <g-col span='14' class="demobox"></g-col>
+            <g-col span='6' class="demobox"></g-col>
+        </g-row>
+        <!-- <g-row> -->
+        <!-- <g-col>1</g-col>
             <g-col>2</g-col>
         </g-row>
         <g-row>
@@ -47,18 +73,18 @@
             <g-col span = "1"offset = "1">1</g-col>
             <g-col span = "9">2</g-col>
             <g-col span = "17" >2</g-col>
-        </g-row>
+        </g-row> -->
         <!--通过icon,icon-position 将参数传入组件中 
         v-bind 之间不能加空格 -->
-        <div class="box">
+        <!-- <div class="box">
         <g-input v-model='message'></g-input>
         <p>{{message}}</p>
         </div>
         <div class="box">
         <g-input value = 'alwex' @change='inputChange'></g-input>
-        </div>
+        </div> -->
         <!-- <g-input value = 'alwex' :disabled = true></g-input> -->
-        <div class="box">
+        <!-- <div class="box">
         <g-input value = 'alwwex' disabled ></g-input>
         </div>
         <div class="box">
@@ -79,7 +105,7 @@
            <g-button >更多</g-button>
            <g-button icon='right'icon-position='right'>下一页</g-button>
          </buttongroup>
-        </div>
+        </div> -->
     </div>
     <script src="./src/app.js"></script>
 
