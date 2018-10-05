@@ -1,58 +1,74 @@
 <template>
-  <div class="col" :class="[`col-${span}`,offset&&`offset-${offset}`]"
-  :style="{paddingLeft: gutter / 2 + 'px', paddingRight: gutter / 2 + 'px'}">
+  <div class="col" :class="colClasses" :style="colStyle">
     <slot> </slot>
   </div>
 </template>
 <script>
 export default {
-  name:'vueCol',
-  props:{
+  name: "vueCol",
+  props: {
     span: {
-      type:[Number,String]
+      type: [Number, String]
     },
-    offset:{
-      type:[Number,String]
-    },
-  },
-  data(){
-    return {
-      gutter: 0
+    offset: {
+      type: [Number, String]
     }
   },
-  created(){
-    console.log('col crted')
+  data() {
+    //一开始就去读data,data中的属性是不会变的
+    return {
+      gutter: 0
+      //  没毛用： colStyle:{
+      //     paddingLeft: this.gutter / 2 + 'px',
+      //     paddingRight: this.gutter / 2 + 'px'
+      //   }
+    };
   },
-  mounted(){
-    console.log('col mount ')
-  }
-}
+  computed: {
+    colClasses() {
+      let { span, offset } = this; //结构
+      return [`col-${span}`, offset && `offset-${offset}`];
+    },
+    colStyle() {
+      // console.log('gutter变了我也要变')
+      return {
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px"
+      };
+    }
+  },
+  created() {},
+  mounted() {}
+};
 </script>
 
 <style lang="scss" scoped>
-  .col{ height: 100px; background:#cccc; width: 50%; border: 1px solid red; 
-    $class-prefix: col-;
+.col {
+  height: 100px;
+  background: #cccc;
+  width: 50%;
+  border: 1px solid red;
+  $class-prefix: col-;
   //说明class前缀
-    @for $n from 1 through 24{
+  @for $n from 1 through 24 {
     //.col.col-1
     //.col.col-2
     //.col.col-3
-      &.#{$class-prefix}#{$n}{
+    &.#{$class-prefix}#{$n} {
       //col-n
-        width: ($n / 24) * 100%
-       }
+      width: ($n / 24) * 100%;
     }
-    $class-prefix: offset-;
-    @for $n from 1 through 24{
+  }
+  $class-prefix: offset-;
+  @for $n from 1 through 24 {
     //.col.col-1
     //.col.col-2
     //.col.col-3
-    &.#{$class-prefix}#{$n}{
+    &.#{$class-prefix}#{$n} {
       //col-n
-        margin-left: ($n / 24) * 100%
-       }
+      margin-left: ($n / 24) * 100%;
     }
+  }
 }
-  
 </style>
 
