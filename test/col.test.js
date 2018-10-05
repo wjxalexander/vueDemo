@@ -33,11 +33,12 @@ describe('Col', () => {
     const Constructor = Vue.extend(Col)
     const vm = new Constructor({
       propsData: {
-        offest: '1'
+        offset: 1
       }
     }).$mount(div)
     const element = vm.$el
-    expect(element.classList.contains('offest-1')).to.equal(true)
+    console.log(element)
+    expect(element.classList.contains('offset-1')).to.equal(true)
     div.remove()
     vm.$destroy()
   })

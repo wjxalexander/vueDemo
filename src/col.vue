@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClasses" :style="colStyle">
+  <div class="col" :class="colClass" :style="colStyle">
     <slot> </slot>
   </div>
 </template>
@@ -24,7 +24,6 @@ export default {
     offset: {
       type: [Number, String]
     },
-    phone: { type: Object, validator },
     ipad: { type: Object, validator },
     narrowPc: { type: Object, validator },
     pc: { type: Object, validator },
@@ -41,23 +40,25 @@ export default {
     };
   },
   methods:{
-    createClass(obj,str = ''){
+    createClass(obj, str = ''){
       if(!obj){return []}
       let array = []
+      //console.log(obj.span)
       if(obj.span){array.push(`col-${str}${obj.span}`)}
       if(obj.offset){array.push(`offset-${str}${obj.offset}`)}
+      //console.log(array)
       return array
     }
   },
   computed: {
-    colClasses() {
+    colClass() {
       let { span, offset,  ipad, narrowPc, pc, widePc } = this; //结构
       let createClasses = this.createClass;
       return [
         ...createClasses({span,offset}),
-        ...createClasses({ipad},'ipad-'),  
-        ...createClasses({narrowPc},'narrowPc-'),
-        ...createClasses({pc},'pc-'),
+        ...createClasses(ipad,'ipad-'),  
+        ...createClasses(narrowPc,'narrowPc-'),
+        ...createClasses(pc,'pc-'),
       ];
     },
     colStyle() {
