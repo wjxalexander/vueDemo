@@ -16,7 +16,7 @@ describe('Col', () => {
   it('接收 span 属性', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(Row)
+    const Constructor = Vue.extend(Col)
     const vm = new Constructor({
       propsData: {
         span: '1'
@@ -30,7 +30,7 @@ describe('Col', () => {
   it('接收 offest 属性', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(Row)
+    const Constructor = Vue.extend(Col)
     const vm = new Constructor({
       propsData: {
         offest: '1'
@@ -45,7 +45,7 @@ describe('Col', () => {
   it('接收 pc 属性', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(Row)
+    const Constructor = Vue.extend(Col)
     const vm = new Constructor({
       propsData: {
         pc: {span:1, offset:2}
