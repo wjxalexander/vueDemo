@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col" :class="[`col-${span}`]">
     <slot> </slot>
   </div>
 </template>
@@ -8,7 +8,7 @@ export default {
   name:'vueCol',
   props:{
     span: {
-      type:Number,
+      type:[Number,String]
     }
   } 
 }
@@ -20,6 +20,7 @@ export default {
     background:#cccc;
     width: 50%;
     border: 1px solid red;
+  }
     $class-prefix: col-;
   //说明class前缀
     @for $n from 1 through 24{
@@ -31,6 +32,6 @@ export default {
         width: ($n / 24) * 100%
        }
     }
-  }
+  
 </style>
 
