@@ -71,9 +71,6 @@ export default {
   $class-prefix: col-;
   //说明class前缀
   @for $n from 1 through 24 {
-    //.col.col-1
-    //.col.col-2
-    //.col.col-3
     &.#{$class-prefix}#{$n} {
       //col-n
       width: ($n / 24) * 100%;
@@ -81,16 +78,14 @@ export default {
   }
   $class-prefix: offset-;
   @for $n from 1 through 24 {
-    //.col.col-1
-    //.col.col-2
-    //.col.col-3
+
     &.#{$class-prefix}#{$n} {
       //col-n
       margin-left: ($n / 24) * 100%;
     }
   }
  
-  @media (min-width: 576px) and(max-width: 768px) {
+  @media (min-width: 577px){
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -104,21 +99,21 @@ export default {
       }
     }
   }
-  @media (min-width: 769px) and(max-width: 992px) {
+  @media (min-width: 769px) {
     $class-prefix: col-narrowPc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
         width: ($n / 24) * 100%;
       }
     }
-    $class-prefix: offset-ipad-;
+    $class-prefix: offset--narrowPc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
         width: ($n / 24) * 100%;
       }
     }
   }
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 993px){
       $class-prefix: col-narrow-pc-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
@@ -126,20 +121,6 @@ export default {
         }
       }
       $class-prefix: offset-narrow-pc-;
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}#{$n} {
-          margin-left: ($n / 24) * 100%;
-        }
-      }
-    }
-    @media (min-width: 993px) and (max-width: 1200px) {
-      $class-prefix: col-pc-;
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}#{$n} {
-          width: ($n / 24) * 100%;
-        }
-      }
-      $class-prefix: offset-pc-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
           margin-left: ($n / 24) * 100%;
