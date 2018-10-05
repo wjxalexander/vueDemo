@@ -38,16 +38,29 @@
 
 <body>
     <style>
-        .demobox{
-            min-height:50px;
-            background: #ccc;
-            border: 1px solid red
-        }
+
     </style>
     <div id="app">
-        <g-row class="topbar" align = 'right'>
+        <g-row gutter="20">
+            <g-col span="2" 
+            :phone="{span:24}" 
+            :ipad="{span:8}" 
+            :narrow-pc="{span:4}" 
+            :pc="{span:2}" 
+            :wide-pc="{span:1}">
+                1
+            </g-col>
+            <g-col span="22" 
+            :phone="{span:24}" 
+            :ipad="{span:16}" 
+            :narrow-pc="{span:20}" 
+            :pc="{span:22}" 
+            :wide-pc="{span:23}">11
+            </g-col>
+        </g-row>
+        <g-row class="topbar" align='right' gutter='20'>
             <g-col span='9' class="demobox">
-                <g-row align = 'right'>
+                <g-row align='right'>
                     <g-col>1</g-col>
                     <g-col>2</g-col>
                     <g-col>3</g-col>
@@ -56,7 +69,7 @@
             </g-col>
             <g-col span='15' class="demobox"></g-col>
         </g-row>
-        <g-row class="logo-and-search-and-qecode" align = 'left'>
+        <g-row class="logo-and-search-and-qecode" align='left'>
             <g-col span='4' class="demobox"></g-col>
             <g-col span='14' class="demobox"></g-col>
             <g-col span='6' class="demobox"></g-col>
