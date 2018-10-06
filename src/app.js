@@ -10,8 +10,8 @@ import Content from './content'
 import Header from './header'
 import Footer from './footer'
 import Sider from './sider'
-
-
+import Toast from './toast'
+import Plugin from './plugin'
 
 //以下两个都将组件全局化
 Vue.component('g-button', Button)//g-button 对应的就是BUtton
@@ -25,6 +25,8 @@ Vue.component('g-content',Content)
 Vue.component('g-header',Header)
 Vue.component('g-footer',Footer)
 Vue.component('g-sider',Sider)
+Vue.component('g-toast',Toast)
+Vue.use(Plugin)
 
 var app = new Vue({
   el: '#app',
@@ -34,9 +36,15 @@ var app = new Vue({
     loading3: false,
     message: "hi"
   },
+  created(){
+    // this.$toast('hi')
+  },
   methods:{
-    inputChange: function(e){
-      console.log(e.target)
+    changeLoading(){
+      console.log(this.loading);
+    },
+    showToast(){
+      this.$toast('hi')
     }
   }
 })
