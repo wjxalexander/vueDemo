@@ -25,7 +25,7 @@ describe('Toast', () => {
           expect(document.body.contains(vm.$el)).to.equal(false)
           done()
         },1500)
-  
+
         vm.$destroy()
     })
     it('接受 closeButton', (done) => {
@@ -48,6 +48,25 @@ describe('Toast', () => {
       },200)
       vm.$destroy()
     }) 
+    it('接受 enableHtml', () => {
+      const Constructor = Vue.extend(Toast)
+      const vm = new Constructor({
+        propsData: {enableHtml: true}
+      })
+      vm.$slots.default = ['<strong id="test">hi</strong>']
+      vm.$mount()
+      let strong = vm.$el.querySelector('#test')
+      expect(strong).to.exist
+    })
+    it('接受 position', () => {
+      const Constructor = Vue.extend(Toast)
+      const vm = new Constructor({
+        propsData: {
+          position: 'bottom'
+        }
+      }).$mount()
+      expect(vm.$el.classList.contains('position-bottom')).to.eq(true)
+    })
 
     })
     
