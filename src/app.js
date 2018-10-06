@@ -49,7 +49,7 @@ var app = new Vue({
     showToast(){
       this.$toast('hi',{
         enableHtml:false,
-        position: 'middle',
+        position: 'bottom',
         closeButton:{
           text:'close',
           callback(){
