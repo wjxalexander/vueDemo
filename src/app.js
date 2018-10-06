@@ -40,16 +40,19 @@ var app = new Vue({
     
   },
   methods:{
-    changeLoading(stu){
-      console.log(typeof(stu))
-      let ret = !stu;
-      console.log(`loading = ${ret}`)
-      return (`loading = ${ret}`);
-    },
-    showToast(){
+   showToast1(){
+     this.showToast('top')
+   },
+   showToast2(){
+    this.showToast('middle')
+  },
+  showToast3(){
+    this.showToast('bottom')
+  },
+    showToast(position){
       this.$toast('hi',{
         enableHtml:false,
-        position: 'bottom',
+        position: position,
         closeButton:{
           text:'close',
           callback(){
