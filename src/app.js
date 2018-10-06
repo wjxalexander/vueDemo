@@ -40,8 +40,11 @@ var app = new Vue({
     // this.$toast('hi')
   },
   methods:{
-    changeLoading(){
-      console.log(this.loading);
+    changeLoading(stu){
+      console.log(typeof(stu))
+      let ret = !stu;
+      console.log(`loading = ${ret}`)
+      return (`loading = ${ret}`);
     },
     showToast(){
       this.$toast('hi')
