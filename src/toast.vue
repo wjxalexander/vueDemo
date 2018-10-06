@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="wrapper">
+  <div class="toast" ref="wrapper" :class="toastClasses">
     <div class="message">
       <slot v-if="!enableHtml"></slot>
       <div v-else v-html="$slots.default[0]"></div>
@@ -23,7 +23,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 50
+      default: 5
     },
     closeButton: {
       type: Object,
@@ -31,13 +31,20 @@ export default {
         return {
           text: "close",
           callback:undefined
-          }
+        }
       }
     },
     enableHtml: {
       type: Boolean,
       default: false
-    }
+    },
+    position:{
+      type: String,
+      validator(key){
+        return (['top','middle','bottom'].indexOf(key)>=0)
+      },
+      default:'top'
+    },
   },
   created() {
     console.log(this.closeButton);
@@ -46,6 +53,14 @@ export default {
     this.endClose();
     this.updateLineStyle();
     //mounted过后wrapper的高度可能为0，需要异步解决，settimeOut tricky
+  },
+  computed:{
+    toastClasses(){
+      return {
+        [`position-${this.position}`]:true
+        }
+    }
+
   },
   methods: {
     endClose() {
@@ -66,11 +81,12 @@ export default {
     },
     onClickClose() {
       this.close();
-      // if (this.closeButton && typeof this.closeButton.callback === 'function') {
-      //     this.closeButton.callback(this)//this === toast实例
-      // }
+      if (this.closeButton && typeof this.closeButton.callback === 'function') {
+          this.closeButton.callback(this)//this === toast实例
+      }
     }
   }
+
 };
 </script>
 
@@ -83,7 +99,6 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   min-height: $toast-min-height;
   line-height: 1.8;
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -104,6 +119,18 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     height: 100%;
     border-left: 1px solid #666;
     margin-left: 16px;
+  }
+  &.position-top{
+     top: 0;
+     transform: translateX(-50%);
+  }
+  &.position-bottom{
+     bottom: 0;
+     transform: translateX(-50%);
+  }
+  &.position-middle{
+     top: 50%;
+     transform: translate(-50%,-50%);
   }
 }
 </style>

@@ -37,7 +37,17 @@ var app = new Vue({
     message: "hi"
   },
   created(){
-    this.$toast('hi',{enableHtml:false})
+    this.$toast('hi',{
+    enableHtml:false,
+    position: 'middle',
+    closeButton:{
+      text:'close',
+      callback(){
+        console.log('okoko3')
+      }
+    },
+    autoClose: false 
+    })
   },
   methods:{
     changeLoading(stu){
