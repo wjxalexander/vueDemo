@@ -56,10 +56,10 @@ var app = new Vue({
         closeButton:{
           text:'close',
           callback(){
-            console.log('okoko3')
+            console.log('他说已经充值智商了')
           }
         },
-        autoClose: false 
+        autoClose: 5
         })
     }
   }

@@ -19,13 +19,13 @@ export default {
   name: "toast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
+      type: [Boolean, Number],
+      default: 5,
+      validator(value){
+        return value===false || typeof value === 'number';
+      }
     },
-    autoCloseDelay: {
-      type: Number,
-      default: 5
-    },
+
     closeButton: {
       type: Object,
       default() {
@@ -47,9 +47,7 @@ export default {
       default: "top"
     }
   },
-  created() {
-    console.log(this.closeButton);
-  },
+
   mounted() {
     this.endClose();
     this.updateLineStyle();
@@ -67,7 +65,7 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     updateLineStyle() {
@@ -103,10 +101,11 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  $animation-duration: 300ms;
     &.position-top {
     top: 0;
     .toast{
-      animation: sildedown 1s;
+      animation: sildedown $animation-duration;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
@@ -114,13 +113,13 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   &.position-bottom {
     bottom: 0;
     .toast{
-      animation: sildeup 1s;
+      animation: sildeup $animation-duration;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
   &.position-middle {
-    animation: fadein 1s;
+    animation: fadein $animation-duration;
     top: 50%;
     transform:  translateX(-50%) translateY(-50%);
   }
