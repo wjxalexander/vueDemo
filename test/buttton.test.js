@@ -73,11 +73,28 @@ describe('Button', () => {
                 icon: 'settings',
             }
         }).$mount()
-
         const callback = sinon.fake();//确定函数被调用
         vm.$on('click', callback)
         vm.$el.click()
         expect(callback).to.have.been.called
-
     })
+    it('接受 enableHtml', () => {
+        const Constructor = Vue.extend(Toast)
+        const vm = new Constructor({
+          propsData: {enableHtml: true}
+        })
+        vm.$slots.default = ['<strong id="test">hi</strong>']
+        vm.$mount()
+        let strong = vm.$el.querySelector('#test')
+        expect(strong).to.exist
+      })
+      it('接受 position', () => {
+        const Constructor = Vue.extend(Toast)
+        const vm = new Constructor({
+          propsData: {
+            position: 'bottom'
+          }
+        }).$mount()
+        expect(vm.$el.classList.contains('position-bottom')).to.eq(true)
+      })
 })

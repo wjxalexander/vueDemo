@@ -17,15 +17,37 @@ describe('Toast', () => {
         const Constructor = Vue.extend(Toast)
         const vm = new Constructor({
           propsData: {
-            autoClose: 1,
+            autoClose: 0.3
           }
         }).$mount(div) 
-        vm.$on('close',()=>{
+        setTimeout(()=>{
+          console.log(document.body.contains(vm.$el))
           expect(document.body.contains(vm.$el)).to.equal(false)
           done()
-        })
+        },1500)
+  
         vm.$destroy()
     })
+    it('接受 closeButton', (done) => {
+      const callback = sinon.fake();
+      const Constructor = Vue.extend(Toast)
+      const vm = new Constructor({
+        propsData: {
+          closeButton: {
+            text: '关闭吧',
+            callback,
+          },
+        }
+      }).$mount()
+      let closeButton = vm.$el.querySelector('.close')
+      expect(closeButton.textContent.trim()).to.eq('关闭吧')
+      setTimeout(()=>{
+        closeButton.click()
+        expect(callback).to.have.been.called
+        done()
+      },200)
+      vm.$destroy()
+    }) 
 
     })
     

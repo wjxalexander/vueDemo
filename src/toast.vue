@@ -20,9 +20,9 @@ export default {
   props: {
     autoClose: {
       type: [Boolean, Number],
-      default: 5,
-      validator(value){
-        return value===false || typeof value === 'number';
+      default: 3,
+      validator(value) {
+        return value === false || typeof value === "number";
       }
     },
 
@@ -49,8 +49,8 @@ export default {
   },
 
   mounted() {
+    this.$nextTick(this.updateLineStyle());
     this.endClose();
-    this.updateLineStyle();
     //mounted过后wrapper的高度可能为0，需要异步解决，settimeOut tricky
   },
   computed: {
@@ -61,20 +61,20 @@ export default {
     }
   },
   methods: {
+    updateLineStyle() {
+      this.$refs.line.style.height = `${
+        this.$refs.wrapper.getBoundingClientRect().height
+      }px`;
+    },
     endClose() {
       if (this.autoClose) {
         setTimeout(() => {
+          console.log('going to close',this.autoClose)
           this.close();
         }, this.autoClose * 1000);
       }
     },
-    updateLineStyle() {
-      this.$nextTick(() => {
-        this.$refs.line.style.height = `${
-          this.$refs.wrapper.getBoundingClientRect().height
-        }px`;
-      });
-    },
+
     close() {
       this.$el.remove();
       this.$emit("close");
@@ -94,17 +94,42 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-@keyframes sildeup { 0% { opacity: 0; transform: translateY(100%); } 100% { opacity: 1; transform: translateY(0%); } }
-@keyframes sildedown { 0% { opacity: 0; transform: translateY(-100%); } 100% { opacity: 1; transform: translateY(0%); } }
-@keyframes fadein { 0% { opacity: 0; } 100% { opacity: 1; } }
-.aligncenter{
+@keyframes sildeup {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes sildedown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.aligncenter {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   $animation-duration: 300ms;
-    &.position-top {
+  &.position-top {
     top: 0;
-    .toast{
+    .toast {
       animation: sildedown $animation-duration;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -112,16 +137,18 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   &.position-bottom {
     bottom: 0;
-    .toast{
+    .toast {
       animation: sildeup $animation-duration;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
   &.position-middle {
-    animation: fadein $animation-duration;
     top: 50%;
-    transform:  translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    .toast {
+      animation: fadein $animation-duration;
+    }
   }
 }
 .toast {
@@ -147,6 +174,5 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     border-left: 1px solid #666;
     margin-left: 16px;
   }
-
 }
 </style>

@@ -33,11 +33,11 @@ export default {
     }
   },
   created() {
-    console.log("row cretd");
+    // console.log("row cretd");
     //这时没有儿子，
   },
   mounted() {
-    console.log("row mounted"); 
+    // console.log("row mounted"); 
     //放在DOM里了
     this.$children.forEach(vm => {
       vm.gutter = this.gutter;
