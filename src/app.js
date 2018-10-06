@@ -37,7 +37,7 @@ var app = new Vue({
     message: "hi"
   },
   created(){
-    // this.$toast('hi')
+    this.$toast('hi',{enableHtml:false})
   },
   methods:{
     changeLoading(stu){
@@ -47,7 +47,6 @@ var app = new Vue({
       return (`loading = ${ret}`);
     },
     showToast(){
-      this.$toast('hi')
     }
   }
 })
