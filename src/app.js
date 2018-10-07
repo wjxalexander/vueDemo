@@ -17,7 +17,7 @@ import Tabpanel from './tab-panel'
 import Tab from './tab'
 import Tabbody from './tabs-body'
 import Tabnav from './tabs-nav'
-
+import Popover from './popover'
 //以下两个都将组件全局化
 Vue.component('g-button', Button)//g-button 对应的就是BUtton
 Vue.component('g-icon', Icon)//g-button 对应的就是BUtton
@@ -36,6 +36,7 @@ Vue.component('g-tab-panel', Tabpanel)
 Vue.component('g-tab', Tab)
 Vue.component('g-tab-body', Tabbody)
 Vue.component('g-tab-nav', Tabnav)
+Vue.component('g-popover', Popover)
 Vue.use(Plugin)
 
 var app = new Vue({

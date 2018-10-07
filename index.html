@@ -29,10 +29,9 @@
 
 <body>
     <style>
-        .demo {
+        #app {
             background: #ddd;
-            border: 1px solid #666;
-            min-height: 100px;
+            padding: 100px 100px
         }
 
         .sider {
@@ -40,42 +39,13 @@
         }
     </style>
     <div id="app">
-            <g-tab selected='finace'>
-                    <g-tab-nav>
-                        <g-tab-item name='weather'> 天气</g-tab-item>
-                        <g-tab-item name='sports' >体育</g-tab-item>
-                        <g-tab-item name='finace'>财经</g-tab-item>
-                        <g-tab-item name='stars' >娱乐</g-tab-item>
-                    </g-tab-nav>
-                    <g-tab-body>
-                        <g-tab-panel name='weather'>天气</g-tab-panel>
-                        <g-tab-panel name='sports'>体育</g-tab-panel>
-                        <g-tab-panel name='finace'>财经</g-tab-panel>
-                        <g-tab-panel name='stars'>娱乐</g-tab-panel>
-                    </g-tab-body>
-                </g-tab>
-        <!-- <g-tab :selected.sync='selectedTab'> -->
-            <!-- <g-tab-nav selected='selectedTab' @update.selected= 'selectedTab = $event'> -->
-            <!-- <g-tab-nav>
-                <template slot='actions'>
-                    <button>1232</button>
-                </template>    
-                <g-tab-item name='weather'>
-                    <g-icon name='setting'></g-icon>
-                         天气
-                </g-tab-item>
-                <g-tab-item name='sports' >体育</g-tab-item>
-                <g-tab-item name='finace' :disabled = 'true'  >财经</g-tab-item>
-                <g-tab-item name='stars' :disabled = 'true'  >娱乐</g-tab-item>
-            </g-tab-nav>
-            <g-tab-body>
-                <g-tab-panel name='weather'>天气</g-tab-panel>
-                <g-tab-panel name='sports'>体育</g-tab-panel>
-                <g-tab-panel name='finace'>财经</g-tab-panel>
-                <g-tab-panel name='stars'>娱乐</g-tab-panel>
+        <g-popover>
+            <template slot='content'>
+                <div>123 popoover</div>
+            </template>
+                <button>点我</button>
+        </g-popover>
 
-            </g-tab-body>
-        </g-tab> -->
     </div>
     <script src="./src/app.js"></script>
 
