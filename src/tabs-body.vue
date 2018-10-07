@@ -6,12 +6,16 @@
 
 <script>
 export default {
-  name: 'tab-body'
+  name: 'tab-body',
+  inject: ['eventBus'],
+  created(){
+    console.log(this.eventBus)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .tab-body{
-    
+
   }
 </style>

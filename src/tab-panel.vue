@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'tabPane'
+  name: 'tabPane',
+  inject: ['eventBus'],
+  created(){
+    this.eventBus.$on('updated:selected',(name)=>{
+      console.log(name)
+    })
+  }
 }
 </script>
 
