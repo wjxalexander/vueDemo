@@ -19,7 +19,7 @@ export default {
       let _this = this;
       console.log("visble change1");
       this.visible = !this.visible;
-      setTimeout(() => {
+      this.$nextTick(() => {
         let eventHandler = () =>{
           this.visible =false
           document.removeEventListener('click',eventHandler)
