@@ -40,99 +40,25 @@
         }
     </style>
     <div id="app">
-        <g-layout style="height: 100vh">
-            <g-sider class='demo sider'>sider</g-sider>
-            <g-layout>
-                <g-header class='demo'>
-                    <g-button icon='setting' icon-position='left' v-bind:loading="loading1" v-on:click="loading1 = !loading1">
-                        按钮
-                    </g-button>
-                    header
-
-                </g-header>
-                <g-content class='demo'>
-                    <g-row>
-                        <g-col span='23' offset="1" :pc="{span:8, offset:12}">
-                            <div class="demo"></div>
-                        </g-col>
-                    </g-row>
-                    content
-                </g-content>
-                <g-footer class='demo'></g-footer>
-            </g-layout>
-        </g-layout>
-        <!-- <g-row>
-         <g-layout style="height: 100vh">
-            <g-header class = 'demo'></g-header>
-            <g-content class = 'demo'></g-content>
-            <g-footer class = 'demo'></g-footer>
-        </g-layout> -->
-        <!-- <g-row>
-            <g-col span="24" :narrow-pc="{span:8,offset:12}">
-                <div class="demo"></div>
-            </g-col>
-        </g-row>
-        <g-row class="topbar" align='right' gutter='20'>
-            <g-col span='9' class="demobox">
-                <g-row align='right'>
-                    <g-col>1</g-col>
-                    <g-col>2</g-col>
-                    <g-col>3</g-col>
-                    <g-col>4</g-col>
-                </g-row>
-            </g-col>
-            <g-col span='15' class="demobox"></g-col>
-        </g-row>
-        <g-row class="logo-and-search-and-qecode" align='left'>
-            <g-col span='4' class="demobox"></g-col>
-            <g-col span='14' class="demobox"></g-col>
-            <g-col span='6' class="demobox"></g-col>
-        </g-row> -->
-        <!-- <g-row> -->
-        <!-- <g-col>1</g-col>
-            <g-col>2</g-col>
-        </g-row>
-        <g-row>
-            <g-col span = "2">1</g-col>
-            <g-col span = "22">2</g-col>
-        </g-row>
-        <g-row gutter = "10">
-            <g-col span = "1"offset = "1">1</g-col>
-            <g-col span = "9">2</g-col>
-            <g-col span = "17" >2</g-col>
-        </g-row> -->
-        <!--通过icon,icon-position 将参数传入组件中 
-        v-bind 之间不能加空格 -->
-        <!-- <div class="box">
-        <g-input v-model='message'></g-input>
-        <p>{{message}}</p>
-        </div>
-        <div class="box">
-        <g-input value = 'alwex' @change='inputChange'></g-input>
-        </div> -->
-        <!-- <g-input value = 'alwex' :disabled = true></g-input> -->
-        <!-- <div class="box">
-        <g-input value = 'alwwex' disabled ></g-input>
-        </div>
-        <div class="box">
-            <g-input value = 'aeqweex' error ="不能少于两个字" ></g-input>
-        </div>
-        <div style="margin: 20px">
-        <g-button icon='setting' icon-position='left' v-bind:loading ="loading1" v-on:click="loading1 = !loading1">
-          按钮
-        </g-button>
-        <g-button icon='setting' icon-position='right' v-bind:loading ="loading2" v-on:click="loading2 = !loading2">
-          按钮
-        </g-button>
-        <g-button icon='setting' icon-position='right' v-bind:loading ="loading3" v-on:click="loading3 = !loading3">
-          按钮
-         </g-button>
-         <buttongroup>
-           <g-button icon='left'>上一页</g-button>
-           <g-button >更多</g-button>
-           <g-button icon='right'icon-position='right'>下一页</g-button>
-         </buttongroup>
-        </div> -->
+        <g-tab :selected.sync='selectedTab'>
+            <!-- <g-tab-nav selected='selectedTab' @update.selected= 'selectedTab = $event'> -->
+            <g-tab-nav>
+                <template slot='actions'>
+                    <button>1232</button>
+                </template>    
+                <g-tab-item name='weather'>
+                    <g-icon name='setting'></g-icon>
+                         天气
+                </g-tab-item>
+                <g-tab-item name='sports' disabled='true'>体育</g-tab-item>
+                <g-tab-item name='finace'>财经</g-tab-item>
+            </g-tab-nav>
+            <g-tab-body>
+                <g-tab-panel name='weather'>天气</g-tab-panel>
+                <g-tab-panel name='sports'>体育</g-tab-panel>
+                <g-tab-panel name='finace'>财经</g-tab-panel>
+            </g-tab-body>
+        </g-tab>
     </div>
     <script src="./src/app.js"></script>
 
