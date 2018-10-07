@@ -12,10 +12,11 @@
 export default {
   name: 'tabNav',
   inject: ['eventBus'],
-  created(){
+  mounted(){
    this.eventBus.$on('update:selected',(name,vm)=>{
-     console.log(name)
-     console.log(vm.$el.getBoundingClientRect().height)
+     let {width,left} = vm.$el.getBoundingClientRect()
+     this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left}px`
    })
   }
 }
@@ -33,8 +34,8 @@ export default {
     >.line{
       position: absolute;
       bottom: 0;
-      border-bottom: $blue 1px solid;
-       width: 100px;
+      border-bottom: $blue 3px solid;
+       transition: all 300ms;
     }
     > .actions-wrapper{
       margin-left: auto;
