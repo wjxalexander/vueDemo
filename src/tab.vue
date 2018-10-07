@@ -34,6 +34,9 @@ export default {
     };
   },
   mounted() {
+    if(this.$children === 0){
+      console.warn('tabs没有子组件')
+    }
     this.$children.forEach((vm)=>{
       if(vm.$options.name==='tabNav'){
         vm.$children.forEach((item)=>{
