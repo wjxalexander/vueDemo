@@ -31,10 +31,11 @@ export default {
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid #ddd;
     >.line{
       position: absolute;
       bottom: 0;
-      border-bottom: $blue 3px solid;
+      border-bottom: $blue 1px solid;
        transition: all 300ms;
     }
     > .actions-wrapper{
