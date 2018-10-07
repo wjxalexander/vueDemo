@@ -9,7 +9,6 @@ export default {
   name: 'tab-body',
   inject: ['eventBus'],
   created(){
-    console.log(this.eventBus)
   }
 }
 </script>

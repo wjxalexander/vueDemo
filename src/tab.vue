@@ -5,40 +5,41 @@
 </template>
 
 <script>
-  import Vue from 'vue'
+import Vue from "vue";
 export default {
-  name: 'tabs',
-  props:{
-    selected:{
+  name: "tabs",
+  props: {
+    selected: {
       type: String,
       required: true
     },
-    direction:{
+    direction: {
       type: String,
-      default:'horizontal',
-      validator(value){
-        return (['horizontal','vertiacal'].indexOf(value) >= 0)
+      default: "horizontal",
+      validator(value) {
+        return ["horizontal", "vertiacal"].indexOf(value) >= 0;
       }
     }
   },
-  created(){
-    console.log(this)
+  created() {
   },
-  data(){
-    return{
-       eventBus: new Vue()
-    }
-  },
-  provide(){
+  data() {
     return {
-     eventBus: this.eventBus
+      eventBus: new Vue()
+    };
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  mounted() {
+    this.$emit("updated:selected", this.selected);//事件发布
   }
-}
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  .tabs{
-    
-  }
+.tabs {
+}
 </style>
