@@ -21,16 +21,16 @@ export default {
   inject: ['eventBus'],
   
   created(){
-
-  },
-  mounted(){
-    this.eventBus.$on('updated:selected',(name)=>{
+    this.eventBus.$on('update:selected',(name)=>{
       if(name === this.name){
        this.active = true;
       }else{
         this.active = false;
       }
     })
+  },
+  mounted(){
+    
   },
   computed:{
     classes(){

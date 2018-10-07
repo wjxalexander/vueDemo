@@ -24,10 +24,7 @@ export default {
   },
   inject: ['eventBus'],
   created(){
-
-  },
-  mounted(){
-    this.eventBus.$on('updated:selected',(name)=>{
+    this.eventBus.$on('update:selected',(name)=>{
       console.log(name)
       if(name === this.name){
        this.active = true;
@@ -35,6 +32,10 @@ export default {
         this.active = false;
       }
     })
+
+  },
+  mounted(){
+    
   },
   computed:{
     classes(){
@@ -43,7 +44,7 @@ export default {
   },
   methods:{
     xxx(){
-      this.eventBus.$emit('updated:selected',this.name)
+      this.eventBus.$emit('update:selected',this.name)
     }
   }
 }

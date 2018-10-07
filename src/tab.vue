@@ -34,7 +34,7 @@ export default {
     };
   },
   mounted() {
-    this.$emit("updated:selected", this.selected);//事件发布
+     this.eventBus.$emit('update:selected', this.selected)//事件发布
   }
 };
 </script>
