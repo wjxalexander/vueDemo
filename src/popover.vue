@@ -1,6 +1,6 @@
 <template>
   <div class= 'popover' @click.stop="changeState">
-    <div class="content-wrapper" v-if="visible">
+    <div class="content-wrapper" v-if="visible" @click.stop>
       <slot name='content'></slot>
     </div>
     <slot ></slot>
@@ -12,20 +12,24 @@ export default {
   data() {
     return {
       visible: false
-    };
+    }
   },
   methods: {
     changeState() {
-      let _this = this;
-      console.log("visble change1");
+      console.log(this.visible);
       this.visible = !this.visible;
-      this.$nextTick(() => {
-        let eventHandler = () =>{
-          this.visible =false
-          document.removeEventListener('click',eventHandler)
-        }
-        document.addEventListener('click',eventHandler)
-      });
+      if (this.visible === true) {
+        this.$nextTick(() => {
+          let eventHandler = () => {
+            this.visible = false;
+            console.log("document隐藏");
+            document.removeEventListener("click", eventHandler);
+          };
+          document.addEventListener("click", eventHandler);
+        });
+      } else {
+        console.log("vm隐藏");
+      }
     }
   }
 };
