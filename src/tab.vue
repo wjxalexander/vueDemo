@@ -34,7 +34,15 @@ export default {
     };
   },
   mounted() {
-     this.eventBus.$emit('update:selected', this.selected)//事件发布
+    this.$children.forEach((vm)=>{
+      if(vm.$options.name==='tabNav'){
+        vm.$children.forEach((item)=>{
+          if(item.$options.name ==='tabsItem' && item.name === this.selected){
+                 this.eventBus.$emit('update:selected', this.selected, item)//事件发布
+          }
+        })
+      }
+    })
   }
 };
 </script>
