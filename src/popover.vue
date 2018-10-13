@@ -1,9 +1,11 @@
 <template>
   <div class= 'popover' @click.stop="changeState">
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <div ref='contentwrap' class="content-wrapper" v-if="visible" @click.stop>
       <slot name='content'></slot>
     </div>
-    <slot ></slot>
+    <span ref='triggerwrap'>
+      <slot ></slot>
+    </span>
   </div>
 </template>
 <script>
@@ -20,6 +22,10 @@ export default {
       this.visible = !this.visible;
       if (this.visible === true) {
         this.$nextTick(() => {
+          document.body.appendChild(this.$refs.contentwrap)
+          let {width,height,top, left}=this.$refs.triggerwrap.getBoundingClientRect()
+          this.$refs.contentwrap.style.left = left + 'px'
+          this.$refs.contentwrap.style.top = top + 'px'
           let eventHandler = () => {
             this.visible = false;
             console.log("document隐藏");
@@ -31,6 +37,9 @@ export default {
         console.log("vm隐藏");
       }
     }
+  },
+  mounted(){
+     console.log(this.$refs.contentwrap)
   }
 };
 </script>
@@ -41,12 +50,11 @@ export default {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  > .content-wrapper {
+}
+.content-wrapper {
     position: absolute;
-    bottom: 100%;
-    left: 0;
     background: #ccc;
     border: 1px solid red;
+    transform:translateY(-100%)
   }
-}
 </style>
