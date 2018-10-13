@@ -34,7 +34,6 @@ export default {
     close(node){
       this.visible = false
       document.removeEventListener("click", node);
-
     },
     onOpen(){
       this.visible = true;
