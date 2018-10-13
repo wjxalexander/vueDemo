@@ -1,7 +1,7 @@
 <template>
 <div class="collapse-item">
    <div class="collapseitemtitle" @click="toggle">
-     {{title}}
+     {{single}}{{title}}
    </div>
    <div class="contentwarp" v-if='open'>
        <slot></slot>
@@ -19,19 +19,22 @@ export default {
     name:{
       type:String,
       required:true
-    }
+    },
   },
   data(){
     return{
-      open: false
+      open: false,
+      single:false
     }
   },
   inject: ['eventBus'],
   mounted(){
-    this.eventBus.$on('update:selected',(name)=>{
-      console.log('nameis',name)
-      if(name!==this.name){
-        this.close()
+    this.eventBus.$on('update:selected',(names)=>{
+      console.log(names.indexOf(this.name))
+      if(names.indexOf(this.name)<0){
+        if(this.single){
+          this.close()
+        }
       }else{
         console.log('name=name')
         this.show()
@@ -42,8 +45,9 @@ export default {
     toggle(){
       if(this.open){
         this.open = false
+        this.eventBus.$emit('update:removeselected',this.name)
       }else{  
-        this.eventBus.$emit('update:selected',this.name)
+        this.eventBus.$emit('update:addselected',this.name)
       }
     },
     close(){

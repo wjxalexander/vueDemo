@@ -9,12 +9,15 @@ export default {
   name:'collapse',
   props:{
     selected:{
-      type: String,
+      type: Array,
+    },
+    single:{
+      type:Boolean,
     }
   },
   data(){
     return {
-      eventBus: new Vue()
+      eventBus: new Vue(),
     }
   },
   provide(){
@@ -25,9 +28,19 @@ export default {
   mounted(){
     console.log(this.selected)
     this.eventBus.$emit('update:selected',this.selected)
-    this.eventBus.$on('update:selected',name=>{
-      console.log(name)
-      this.$emit('update:selected',name)
+    this.eventBus.$on('update:addselected',name=>{
+      this.selected.push(name)
+      this.$emit('update:selected',this.selected)
+      this.eventBus.$emit('update:selected',this.selected)
+    })
+     this.eventBus.$on('update:removeselected',name=>{
+      let index = this.selected.indexOf(name)
+      this.selected.splice(index,1)
+      this.$emit('update:selected',this.selected)
+      this.eventBus.$emit('update:selected',this.selected)
+    })
+    this.$children.forEach(vm=>{
+      vm.single = this.single
     })
   }
 }
