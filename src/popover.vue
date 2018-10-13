@@ -1,9 +1,9 @@
 <template>
   <div class= 'popover' @click="changeState" ref="popover">
-    <div ref='contentwrap' class="content-wrapper" v-if="visible" >
-      <slot name='content'></slot>
+    <div ref='contentwrap' class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true}" >
+      <slot name='content' :close='close'></slot>
     </div>
-    <span ref='triggerwrap'>
+    <span ref='triggerwrap' style="display:inline-flex">
       <slot ></slot>
     </span>
   </div>
@@ -16,12 +16,27 @@ export default {
       visible: false
     };
   },
+  props:{
+    position:{
+      type:String,
+      default:'top',
+      validator(value){
+        return ['top','bottom','left','right'].indexOf(value)>=0
+      }
+    }
+  },
   methods: {
     postionContent() {
       document.body.appendChild(this.$refs.contentwrap);
       let {width, height, top, left} = this.$refs.triggerwrap.getBoundingClientRect();
-      this.$refs.contentwrap.style.left = left + window.scrollX + "px";
-      this.$refs.contentwrap.style.top = top + window.scrollY + "px";
+      if(this.position === 'top'){
+        this.$refs.contentwrap.style.left = left + window.scrollX + "px";
+        this.$refs.contentwrap.style.top = top + window.scrollY + "px";
+      }else if(this.position ==='bottom'){
+        this.$refs.contentwrap.style.left = left + window.scrollX + "px";
+        this.$refs.contentwrap.style.top = top + window.scrollY + height + "px";
+      }
+
     },
     ListenToDoc() {
       let eventHandler = e => {
@@ -69,6 +84,11 @@ export default {
   position: absolute;
   background: #ccc;
   border: 1px solid red;
-  transform: translateY(-100%);
+  max-width: 20em;
+  word-break: break-all;
+  &.position-top{
+      transform: translateY(-100%);
+      margin-top: -10px;
+  }
 }
 </style>
