@@ -18,6 +18,8 @@ import Tab from './tab'
 import Tabbody from './tabs-body'
 import Tabnav from './tabs-nav'
 import Popover from './popover'
+import Collapse from './collapse'
+import Collapseitem from './collapse-itm'
 //以下两个都将组件全局化
 Vue.component('g-button', Button)//g-button 对应的就是BUtton
 Vue.component('g-icon', Icon)//g-button 对应的就是BUtton
@@ -37,12 +39,14 @@ Vue.component('g-tab', Tab)
 Vue.component('g-tab-body', Tabbody)
 Vue.component('g-tab-nav', Tabnav)
 Vue.component('g-popover', Popover)
+Vue.component('g-collapse',Collapse)
+Vue.component('g-collapseitm',Collapseitem)
 Vue.use(Plugin)
 
 var app = new Vue({
   el: '#app',
   data: {
-    selectedTab: 'sports'
+    selectedTab: '2'
   },
   created() {
 
