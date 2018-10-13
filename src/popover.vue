@@ -24,8 +24,8 @@ export default {
         this.$nextTick(() => {
           document.body.appendChild(this.$refs.contentwrap)
           let {width,height,top, left}=this.$refs.triggerwrap.getBoundingClientRect()
-          this.$refs.contentwrap.style.left = left + 'px'
-          this.$refs.contentwrap.style.top = top + 'px'
+          this.$refs.contentwrap.style.left = left + window.scrollX+ 'px'
+          this.$refs.contentwrap.style.top = top + window.scrollY+ 'px'
           let eventHandler = () => {
             this.visible = false;
             console.log("document隐藏");
